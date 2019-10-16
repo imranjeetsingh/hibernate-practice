@@ -28,11 +28,17 @@ public class UpdateStudentDemo {
 			
 			Student student = session.get(Student.class, studentId);
 			
-			student.setFirstName("IronMan");
-			
+			student.setFirstName("Iron");
+			student.setLastName("Man");
 			
 			session.getTransaction().commit();
 			
+			session = factory.getCurrentSession();
+			session.beginTransaction();
+			
+			session.createQuery("update Student set email='ranjeet@boss.com'").executeUpdate();
+			
+			session.getTransaction().commit();
 			
 			System.out.println("Done!!!!!!");
 		}
