@@ -6,25 +6,28 @@ import org.hibernate.cfg.Configuration;
 
 import com.ranjeet.hibernate.entity.Student;
 
-public class CreateStudentDemo {
+public class PrimaryKeyDemo {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		SessionFactory factory = new Configuration()
-								.configure("hibernate.cfg.xml")
-								.addAnnotatedClass(Student.class)
-								.buildSessionFactory();
-		
+				.configure("hibernate.cfg.xml")
+				.addAnnotatedClass(Student.class)
+				.buildSessionFactory();
+
 		Session session = factory.getCurrentSession();
 		
 		try {
-			System.out.println("Creating a new stident object ...");
+			System.out.println("Creating 3 new stident object ...");
 			
-			Student tempStudemt =  new Student("Ranjeet","Singh","ranjee970@gmail.com");
+			Student tempStudemt =  new Student("Ranjeet1","Singh","ranjee9170@gmail.com");
+			Student tempStudemt1 =  new Student("Ranjeet11","Singh","ranjee91170@gmail.com");
+			Student tempStudemt11 =  new Student("Ranjeet111","Singh","ranjee911170@gmail.com");
 			
 			session.beginTransaction();
 			
 			session.save(tempStudemt);
+			session.save(tempStudemt1);
+			session.save(tempStudemt11);
 			
 			session.getTransaction().commit();
 			
@@ -34,5 +37,5 @@ public class CreateStudentDemo {
 			factory.close();
 		}
 	}
-
+		
 }
