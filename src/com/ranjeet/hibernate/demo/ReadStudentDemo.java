@@ -33,6 +33,16 @@ public class ReadStudentDemo {
 			
 			DisplayStudent(students);
 			
+			students = session.createQuery("from Student s where "
+					+ "s.id='1' OR s.id='4'").getResultList();
+			
+			DisplayStudent(students);
+			
+			students = session.createQuery("from Student s where "
+					+ "s.firstName LIKE '%ranjeet1'").getResultList();
+			
+			DisplayStudent(students);
+			
 			session.getTransaction().commit();
 			
 			
